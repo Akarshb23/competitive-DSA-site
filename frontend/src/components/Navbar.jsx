@@ -1,22 +1,25 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Navbar({ onLearnClick, onPracticeClick }) {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <nav className="sticky top-0 z-50 bg-[#0a0a0c]/80 backdrop-blur-xl border-b border-white/5 px-8 py-4 flex items-center justify-between">
       
-      {/* Logo Section */}
-      <div className="flex items-center gap-3 cursor-pointer group" onClick={() => window.scrollTo(0,0)}>
+      <div
+        className="flex items-center gap-3 cursor-pointer group"
+        onClick={() => navigate("/")}
+      >
         <div className="w-9 h-9 bg-white rounded-xl flex items-center justify-center transition-transform group-hover:rotate-12">
-           <span className="text-[#0a0a0c] font-black text-xl">I</span>
+          <span className="text-[#0a0a0c] font-black text-xl">I</span>
         </div>
         <h1 className="text-2xl font-black tracking-tighter text-white">
           InCode
         </h1>
       </div>
 
-      {/* Desktop Navigation */}
       <div className="hidden md:flex items-center gap-10">
         <button 
           onClick={onLearnClick} 
@@ -25,7 +28,7 @@ function Navbar({ onLearnClick, onPracticeClick }) {
           Learn
         </button>
         <button 
-          onClick={onPracticeClick} 
+          onClick={()=>navigate("/problems")} 
           className="text-sm font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-all"
         >
           Practice
@@ -42,7 +45,6 @@ function Navbar({ onLearnClick, onPracticeClick }) {
         </button>
       </div>
 
-      {/* Mobile Toggle */}
       <button
         className="md:hidden p-2 text-slate-400 hover:text-white transition-colors"
         onClick={() => setOpen(!open)}
@@ -57,9 +59,8 @@ function Navbar({ onLearnClick, onPracticeClick }) {
         )}
       </button>
 
-      {/* Mobile Menu Dropdown */}
       {open && (
-        <div className="absolute top-full left-0 right-0 bg-[#0a0a0c] border-b border-white/10 p-8 flex flex-col gap-6 md:hidden shadow-2xl animate-in fade-in slide-in-from-top-4 duration-300">
+        <div className="absolute top-full left-0 right-0 bg-[#0a0a0c] border-b border-white/10 p-8 flex flex-col gap-6 md:hidden shadow-2xl">
           <button 
             onClick={() => { onLearnClick(); setOpen(false); }}
             className="text-left text-2xl font-black text-white hover:pl-2 transition-all"

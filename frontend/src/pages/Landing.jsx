@@ -5,19 +5,44 @@ export default function Landing() {
   const [index, setIndex] = useState(0);
 
   const content = [
-    { title: "InCode", desc: "Forge your future in modern development.", color: "#6366f1" },
-    { title: "Master Logic", desc: "Break down problems into clean solutions.", color: "#06b6d4" },
-    { title: "Build Fast", desc: "Ship optimized, production-ready code.", color: "#10b981" },
-    { title: "Stay Ahead", desc: "Keep up with evolving tech.", color: "#f59e0b" },
-    { title: "Collaborate", desc: "Work with developers worldwide.", color: "#ec4899" },
+    { 
+      title: "InCode", 
+      desc: "Forge your future in modern development.", 
+      extra: "A platform built to sharpen your problem-solving mindset while preparing you for real-world engineering challenges.",
+      color: "#6366f1" 
+    },
+    { 
+      title: "Master Logic", 
+      desc: "Break down problems into clean solutions.", 
+      extra: "Develop structured thinking that helps you approach complex systems with clarity and confidence.",
+      color: "#06b6d4" 
+    },
+    { 
+      title: "Build Fast", 
+      desc: "Ship optimized, production-ready code.", 
+      extra: "Focus on writing efficient, scalable code that performs under real constraints.",
+      color: "#10b981" 
+    },
+    { 
+      title: "Stay Ahead", 
+      desc: "Keep up with evolving tech.", 
+      extra: "Adapt quickly to new tools, frameworks, and paradigms shaping the industry.",
+      color: "#f59e0b" 
+    },
+    { 
+      title: "Collaborate", 
+      desc: "Work with developers worldwide.", 
+      extra: "Learn from a global community and grow through shared knowledge and competition.",
+      color: "#ec4899" 
+    },
   ];
 
   const totalSteps = content.length;
   const progress = ((index + 1) / totalSteps) * 100;
 
-  const radius = 120;
-  const strokeWidth = 16;
-  const viewBoxSize = 300;
+  const radius = 140;
+  const strokeWidth = 18;
+  const viewBoxSize = 340;
   const center = viewBoxSize / 2;
 
   const circumference = 2 * Math.PI * radius;
@@ -33,9 +58,9 @@ export default function Landing() {
       <Navbar />
 
       <main className="flex-1 flex items-center justify-center px-16">
-        <div className="flex items-center gap-28 w-full max-w-7xl">
+        <div className="flex items-center justify-center gap-24 w-full max-w-5xl mx-auto">
 
-          <div className="relative w-80 h-80 flex-shrink-0">
+          <div className="relative w-[340px] h-[340px] flex-shrink-0">
             <svg
               viewBox={`0 0 ${viewBoxSize} ${viewBoxSize}`}
               className="w-full h-full transform -rotate-90"
@@ -64,24 +89,28 @@ export default function Landing() {
               />
             </svg>
 
-            <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <span className="text-5xl font-bold" style={{ color: currentColor }}>
-                {Math.round(progress)}%
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-6xl font-bold" style={{ color: currentColor }}>
+                InCode
               </span>
             </div>
           </div>
 
-          <div className="flex-1 max-w-2xl">
-            <div className="text-sm tracking-widest uppercase mb-6" style={{ color: currentColor }}>
+          <div className="w-[520px]">
+            <div className="text-sm tracking-widest uppercase mb-6 h-6" style={{ color: currentColor }}>
               Step {index + 1} / {totalSteps}
             </div>
 
-            <h2 className="text-6xl font-semibold mb-6">
+            <h2 className="text-6xl font-semibold mb-6 min-h-[72px]">
               {content[index].title}
             </h2>
 
-            <p className="text-2xl text-slate-400 mb-10 leading-relaxed">
+            <p className="text-2xl text-slate-400 mb-6 leading-relaxed min-h-[64px]">
               {content[index].desc}
+            </p>
+
+            <p className="text-lg text-slate-500 mb-10 leading-relaxed min-h-[80px]">
+              {content[index].extra}
             </p>
 
             <div className="flex items-center gap-8">
